@@ -7,6 +7,9 @@ services:
       - "80:80"  
     links:
       - "mysql:mysql"
+    environment:
+      WORDPRESS_DB_HOST: "mysql:3306"
+      WORDPRESS_DB_PASSWORD: "password"
   mysql:
     container_name: my-wordpress-database
     image: mysql

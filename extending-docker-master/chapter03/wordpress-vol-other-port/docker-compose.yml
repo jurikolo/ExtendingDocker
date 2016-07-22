@@ -1,0 +1,19 @@
+version: '2'
+services:
+  wordpress8080:
+    container_name: my-wordpress-app-8080
+    image: wordpress
+    ports: 
+      - "8080:80"
+    external_links:
+      - mysql
+    environment:
+      WORDPRESS_DB_HOST: "mysql:3306"
+      WORDPRESS_DB_PASSWORD: "password"
+    volumes:
+      - "uploads:/var/www/html/wp-content/uploads/"
+    networks:
+      - default
+volumes:
+  uploads:
+    driver: local
